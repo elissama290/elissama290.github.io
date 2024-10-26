@@ -1,0 +1,173 @@
+package teste;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+
+class Tarefa {
+    private String nome;
+    private String descricao;
+    private String data;
+    private String categoria;
+
+    public Tarefa(String nome, String descricao, String data, String categoria) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.data = data;
+        this.categoria = categoria;
+    }
+
+    public String getNome() { return nome; }
+    public String getDescricao() { return descricao; }
+    public String getData() { return data; }
+    public String getCategoria() { return categoria; }
+
+    @Override
+    public String toString() {
+        return "Nome: " + nome + ", Data: " + data + ", Categoria: " + categoria;
+    }
+}
+
+class TelaMenu extends JFrame {
+
+    private CardLayout cardLayout;
+    private JPanel painelPrincipal;
+    private List<Tarefa> tarefas;
+
+    public TelaMenu() {
+        tarefas = new ArrayList<>(); // Armazena as tarefas
+
+        // Configuração da janela principal
+        setTitle("Task Manager");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+
+        // Configura barra de menu
+        JMenuBar menuBar = new JMenuBar();
+        JMenu menu = new JMenu("Menu");
+        JMenuItem adicionarTarefaItem = new JMenuItem("Adicionar Tarefa");
+        JMenuItem listarTarefasItem = new JMenuItem("Listar Tarefas");
+        JMenuItem filtrarTarefasItem = new JMenuItem("Filtrar Tarefas");
+        
+        menu.add(adicionarTarefaItem);
+        menu.add(listarTarefasItem);
+        menu.add(filtrarTarefasItem);
+        menuBar.add(menu);
+        setJMenuBar(menuBar);
+
+        // Configuração do painel principal com CardLayout
+        cardLayout = new CardLayout();
+        painelPrincipal = new JPanel(cardLayout);
+
+        // Adiciona as três telas ao painel principal
+        painelPrincipal.add(criarTelaAdicionarTarefa(), "Tela Adicionar Tarefa");
+        painelPrincipal.add(criarTelaListarTarefas(), "Tela Listar Tarefas");
+        painelPrincipal.add(criarTelaFiltrarTarefas(), "Tela Filtrar Tarefas");
+
+        add(painelPrincipal, BorderLayout.CENTER);
+
+        // Eventos para alternar entre as telas
+        adicionarTarefaItem.addActionListener(e -> cardLayout.show(painelPrincipal, "Tela Adicionar Tarefa"));
+        listarTarefasItem.addActionListener(e -> {
+            atualizarListaTarefas();
+            cardLayout.show(painelPrincipal, "Tela Listar Tarefas");
+        });
+        filtrarTarefasItem.addActionListener(e -> cardLayout.show(painelPrincipal, "Tela Filtrar Tarefas"));
+    }
+
+    private JPanel criarTelaAdicionarTarefa() {
+        JPanel panel = new JPanel(new GridLayout(5, 2));
+        JTextField nomeField = new JTextField();
+        JTextField descricaoField = new JTextField();
+        JTextField dataField = new JTextField();
+        JTextField categoriaField = new JTextField();
+        JButton adicionarButton = new JButton("Adicionar");
+
+        panel.add(new JLabel("Nome da Tarefa:"));
+        panel.add(nomeField);
+        panel.add(new JLabel("Categoria:"));
+        panel.add(descricaoField);
+        panel.add(new JLabel("Data:"));
+        panel.add(dataField);
+        panel.add(new JLabel("Descrição:"));
+        panel.add(categoriaField);
+        panel.add(new JLabel(""));
+        panel.add(adicionarButton);
+
+        adicionarButton.addActionListener(e -> {
+            String nome = nomeField.getText();
+            String descricao = descricaoField.getText();
+            String data = dataField.getText();
+            String categoria = categoriaField.getText();
+            tarefas.add(new Tarefa(nome, descricao, data, categoria));
+            JOptionPane.showMessageDialog(this, "Tarefa adicionada com sucesso!");
+            nomeField.setText("");
+            descricaoField.setText("");
+            dataField.setText("");
+            categoriaField.setText("");
+        });
+
+        return panel;
+    }
+
+    private JPanel criarTelaListarTarefas() {
+        JPanel panel = new JPanel(new BorderLayout());
+        JTextArea areaTarefas = new JTextArea();
+        areaTarefas.setEditable(false);
+        panel.add(new JScrollPane(areaTarefas), BorderLayout.CENTER);
+
+        atualizarListaTarefas();
+
+        return panel;
+    }
+
+    private void atualizarListaTarefas() {
+        JTextArea areaTarefas = new JTextArea();
+        StringBuilder tarefasTexto = new StringBuilder();
+        for (Tarefa tarefa : tarefas) {
+            tarefasTexto.append(tarefa.toString()).append("\n");
+        }
+        areaTarefas.setText(tarefasTexto.toString());
+    }
+
+    private JPanel criarTelaFiltrarTarefas() {
+        JPanel panel = new JPanel(new BorderLayout());
+        JPanel filterPanel = new JPanel(new GridLayout(2, 2));
+        JTextField categoriaField = new JTextField();
+        JButton filtrarButton = new JButton("Filtrar");
+        JTextArea areaFiltrada = new JTextArea();
+        areaFiltrada.setEditable(false);
+
+        filterPanel.add(new JLabel("Categoria:"));
+        filterPanel.add(categoriaField);
+        filterPanel.add(new JLabel(""));
+        filterPanel.add(filtrarButton);
+
+        panel.add(filterPanel, BorderLayout.NORTH);
+        panel.add(new JScrollPane(areaFiltrada), BorderLayout.CENTER);
+
+        filtrarButton.addActionListener(e -> {
+            String categoriaFiltro = categoriaField.getText();
+            StringBuilder tarefasFiltradasTexto = new StringBuilder();
+            for (Tarefa tarefa : tarefas) {
+                if (tarefa.getCategoria().equalsIgnoreCase(categoriaFiltro)) {
+                    tarefasFiltradasTexto.append(tarefa.toString()).append("\n");
+                }
+            }
+            areaFiltrada.setText(tarefasFiltradasTexto.toString());
+        });
+
+        return panel;
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            TelaMenu app = new TelaMenu();
+            app.setVisible(true);
+        });
+    }
+}
