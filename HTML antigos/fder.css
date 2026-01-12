@@ -1,0 +1,68 @@
+body
+{
+    background-color: rgb(126, 234, 248);
+    margin: 1px;
+    padding: 1px;
+   }
+   h1
+   {
+   text-align: center;
+   }
+   .title
+    {
+       background-color:rgb(48, 48, 48);
+       text-align: center;
+       color:rgb(255, 255, 255);
+       clear: both;
+    }
+    div
+    {
+       width: 500px;
+       height: 170px;
+       display:inline-block;
+       
+    }
+   #titulo
+    {
+       background-color:white;
+      
+       color:black;    
+       
+    }
+    #menu
+    {
+       background-color:white;
+       width: 500px;
+       height: 170px;
+       text-align: left;
+       color:black;
+       clear: both;
+    }
+    #men
+    {
+       background-color:white;
+       width: 500px;
+       height: 150px;
+       text-align: left;
+       color:black;
+    }
+    #titulo2
+    {
+       background-color:grey;
+       
+       color:rgb(255, 255, 255);   
+    }
+    #menu2
+    {
+       background-color:grey;
+       
+       color:rgb(255, 255, 255);   
+    }
+    #men2
+    {
+       background-color:grey;
+       width: 500px;
+       height: 150px;
+       text-align: left;
+       color:rgb(255, 255, 255);
+    }
