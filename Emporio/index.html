@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empório Barboza Gourmet</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Menu -->
+    <header class="header">
+        <div class="container">
+            <h2 class="logo"><span>Empório Barboza Gourmet</span></h2>
+            <nav class="navbar">
+                <a href="#begin">Início</a>
+                <a href="#products">Produtos</a>
+                <a href="#contact">Contato</a>
+                <a href="#review">Avaliações</a>
+            </nav>
+            <div class="icons">
+                <button class="loginBtn" id="loginBtn">Login</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Modal Login -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="fecharLogin()"
+                style="position:absolute; right:20px; top:15px; cursor:pointer; font-size:20px;">&times;</span>
+            <h2 style="text-align:center; color:#6b4f3b; margin-bottom:20px;">Login</h2>
+            <form id="logForm">
+                <input type="email" id="loginEmail" placeholder="E-mail" required>
+                <input type="password" id="loginPassword" placeholder="Senha" required>
+
+                <div id="logFeedback"></div> <button type="submit" class="btn-primary">ENTRAR</button>
+            </form>
+
+            <div class="modal-links">
+                <a href="#" onclick="abrirRegister()">Criar nova conta</a>
+                <a href="#" onclick="abrirForgot()">Esqueci minha senha</a>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Criar Conta -->
+    <div id="registerModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span onclick="fecharRegister()" class="close">&times;</span>
+            <h2>Criar nova conta</h2>
+            <form id="registerForm">
+                <input type="text" id="regName" placeholder="Nome completo" required>
+                <input type="email" id="regEmail" placeholder="E-mail" required>
+                <input type="password" id="regPassword" placeholder="Senha" required>
+                <button type="submit" class="btn-primary">Registrar</button>
+            </form>
+            <div id="regFeedback"></div>
+        </div>
+    </div>
+
+    <!-- Modal Esqueci minha senha -->
+    <div id="forgotModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span onclick="fecharForgot()" class="close">&times;</span>
+            <h2>Recuperar senha</h2>
+            <form id="forgotForm">
+                <input type="email" id="forgotEmail" placeholder="Digite seu e-mail" required>
+                <button type="submit" class="btn-primary">Enviar link de recuperação</button>
+            </form>
+            <div id="forgotFeedback"></div>
+        </div>
+    </div>
+
+
+    <!-- Início -->
+    <section class="begin" id="begin" style="background: url('wallpaper.png') no-repeat center center/cover;">
+        <div class="overlay"></div>
+        <div class="content">
+            <h1>Sabores que contam <span>história</span></h1>
+            <p>Descubra os autênticos sabores de Minas, com qualidade Gourmet. Variedades de Queijos, Biscoitos, Doces
+                tradicionais e Vinhos Artesanais que carregam toda a essência da nossa terra.</p>
+            <div class="buttons">
+                <a href="#products" class="btn-primary">Explorar Mais</a>
+                <a href="#review" class="btn-secondary">Avaliações</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produtos -->
+    <section class="products" id="products">
+        <h2>Nossos Produtos</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="queijo.jpg" alt="Queijo Mineiro">
+                <h3>Queijo Minas Artesanal</h3>
+                <p>Sabor autêntico e tradição em cada pedaço.</p>
+                <p class="price">R$ 45,00</p>
+                <button class="btn-add" data-name="Queijo Minas Artesanal" data-price="45">Adicionar ao
+                    Carrinho</button>
+            </div>
+            <div class="card">
+                <img src="docedeleite.jpg" alt="Doce de Leite">
+                <h3>Doce de Leite</h3>
+                <p>Cremoso, delicioso e feito com carinho.</p>
+                <p class="price">R$ 25,00</p>
+                <button class="btn-add" data-name="Doce de Leite" data-price="25">Adicionar ao Carrinho</button>
+            </div>
+            <div class="card">
+                <img src="cafe.jpg" alt="Café Mineiro">
+                <h3>Café Mineiro</h3>
+                <p>Aroma inconfundível, direto das montanhas de Minas.</p>
+                <p class="price">R$ 45,00</p>
+                <button class="btn-add" data-name="Café Mineiro" data-price="45">Adicionar ao Carrinho</button>
+            </div>
+            <div class="card">
+                <img src="biscoito.jpg" alt="Biscoitos Caseiros">
+                <h3>Biscoitos Caseiros</h3>
+                <p>Crocantes e feitos artesanalmente.</p>
+                <p class="price">R$ 18,00</p>
+                <button class="btn-add" data-name="Biscoitos Caseiros" data-price="18">Adicionar ao Carrinho</button>
+            </div>
+            <div class="card">
+                <img src="pamonha.jpg" alt="Pamonha">
+                <h3>Pamonha</h3>
+                <p>Pamonhas feitas todos os dias, quentinhas e deliciosas.</p>
+                <p class="price">R$ 18,00</p>
+                <button class="btn-add" data-name="Pamonha" data-price="18">Adicionar ao Carrinho</button>
+            </div>
+            <div class="card">
+                <img src="queijocanastra.jpg" alt="Canastra">
+                <h3>Queijo Minas Canastra</h3>
+                <p>Queijo de primeira qualidade, direto da Serra da Canastra.</p>
+                <p class="price">R$ 71,90</p>
+                <button class="btn-add" data-name="Queijo Minas Canastra" data-price="71.90">Adicionar ao
+                    Carrinho</button>
+            </div>
+            <div class="product-card">
+                <img src="palito.jpg" alt="Queijo Palito">
+                <div class="product-info">
+                    <h3>Queijo Palito Temperado</h3>
+                    <p><i>"O ouro líquido de Minas, envelhecida em barris de carvalho."</i></p>
+                    <span class="price">R$ 89,90</span>
+                    <button class="btn-add" onclick="adicionarAoCarrinho(4, 'Queijo Palito Temperado', 89.90)">Adicionar
+                        ao
+                        Carrinho</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="mel.jpg" alt="Mel Silvestre">
+                <div class="product-info">
+                    <h3>Mel Silvestre Puro 500g</h3>
+                    <p><i>"Colhido nas flores das montanhas, 100% natural e sem conservantes."</i></p>
+                    <span class="price">R$ 45,00</span>
+                    <button class="btn-add" onclick="adicionarAoCarrinho(5, 'Mel Silvestre Puro', 45.00)">Adicionar ao
+                        Carrinho</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="reino.jpg" alt="Queijo Reino">
+                <div class="product-info">
+                    <h3>Queijo Reino</h3>
+                    <p><i>"O acompanhamento gourmet perfeito para suas torradas e vinhos."</i></p>
+                    <span class="price">R$ 32,90</span>
+                    <button class="btn-add" onclick="adicionarAoCarrinho(6, 'Queijo Reino', 32.90)">Adicionar
+                        ao Carrinho</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="salame.jpg" alt="Salame Artesanal">
+                <div class="product-info">
+                    <h3>Salame Temperado Italiano</h3>
+                    <p><i>"Curado lentamente, com tempero caseiro e carnes selecionadas."</i></p>
+                    <span class="price">R$ 54,00</span>
+                    <button class="btn-add" onclick="adicionarAoCarrinho(7, 'Salame Artesanal', 54.00)">Adicionar ao
+                        Carrinho</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="goiabada.jpg" alt="Doce de goiabada">
+                <div class="product-info">
+                    <h3>Doce de goiabada caseiro</h3>
+                    <p><i>"Massa tradicional com polvilho artesanal e recheio generoso de requeijão de corte."</i></p>
+                    <span class="price">R$ 38,00</span>
+                    <button class="btn-add"
+                        onclick="adicionarAoCarrinho(8, 'Doce de goiabada caseiro', 38.00)">Adicionar
+                        ao Carrinho</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="geleia.jpg" alt="Geleia de Pimenta">
+                <div class="product-info">
+                    <h3>Geleia de Pimenta </h3>
+                    <p><i>"O equilíbrio perfeito entre a picância e o doce das frutas colhidas no pé."</i></p>
+                    <span class="price">R$ 29,90</span>
+                    <button class="btn-add" onclick="adicionarAoCarrinho(9, 'Geleia de Pimenta', 29.90)">Adicionar ao
+                        Carrinho</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Avaliações -->
+    <section class="review" id="review">
+        <h2>O que dizem nossos clientes</h2>
+        <div class="grid" id="reviewsContainer">
+            <div class="card">
+                <p>"O melhor queijo que já comi! Sabor único."</p>
+                <span>- Ana Paula</span>
+            </div>
+            <div class="card">
+                <p>"Doce de leite incrível, lembra infância na fazenda."</p>
+                <span>- João Silva</span>
+            </div>
+            <div class="card">
+                <p>"Café forte e aromático, perfeito para o dia a dia."</p>
+                <span>- Carla Mendes</span>
+            </div>
+            <div class="card">
+                <p>"Queijo fresquinho."</p>
+                <span>- Felipe </span>
+            </div>
+            <div class="card">
+                <p>"Cremosidade perfeita"</p>
+                <span>- Thais Fernada Pereira</span>
+            </div>
+            <div class="card">
+                <p>"Impecáveis os produtos, recomendo muito!"</p>
+                <span>- Arthur Ferreira</span>
+            </div>
+            <div class="card">
+                <p>"Ideal para quem procura um sabor de minas para seu café da tarde!"</p>
+                <span>- Bruna Souza</span>
+            </div>
+            <div class="card">
+                <p>"Um pedacinho de infância guardado em um pote de vidro."</p>
+                <span>- Jaqueline Campos</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section class="contact" id="contact">
+        <h2>Fale Conosco</h2>
+        <form id="contactForm">
+            <input type="text" id="name" placeholder="Seu nome" required>
+            <input type="email" id="email" placeholder="Seu e-mail" required>
+            <textarea id="message" placeholder="Sua mensagem" required></textarea>
+            <button type="submit" class="btn-primary">Enviar</button>
+        </form>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <h5>Levando a tradição e o sabor autêntico de Minas Gerais para todo o Brasil com produtos artesanais de
+            qualidade.</h5>
+        <p>© 2025 Empório Barboza Gourmet - Todos os direitos reservados</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

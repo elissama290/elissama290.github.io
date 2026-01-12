@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Empório Barboza Gourmet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* RESET E ESTILOS GERAIS */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body.login-bg {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('queijos.jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #3e2b23;
+        }
+
+        .login-container {
+            background-color: rgba(255, 250, 242, 0.98);
+            border-radius: 15px;
+            padding: 40px;
+            width: 100%;
+            max-width: 380px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
+
+        h2 {
+            color: #6b4513;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #b88a50;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-primary {
+            background-color: #b88a50;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+
+        .btn-primary:hover {
+            background-color: #8d6a35;
+        }
+
+        .links-container {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        a {
+            color: #6b4513;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .voltar-link {
+            margin-top: 15px;
+            display: inline-block;
+            color: #8d6a35;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body class="login-bg">
+    <div class="login-container">
+        <h2>Acesse sua Conta</h2>
+
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="Seu E-mail" required>
+            <input type="password" id="password" placeholder="Sua Senha" required>
+            <button type="submit" class="btn-primary">Entrar</button>
+        </form>
+
+        <div class="links-container">
+            <a href="#" onclick="esqueciSenha()">Esqueci minha senha</a>
+            <a href="#" onclick="criarConta()">Não tem conta? Criar nova conta</a>
+            <a href="index.html" class="voltar-link">← Voltar para a Loja</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const email = document.getElementById("email").value;
+            const senha = document.getElementById("password").value;
+
+            const dadosSalvos = localStorage.getItem("usuarioCadastro");
+            if (!dadosSalvos) {
+                alert("Conta não encontrada.");
+                return;
+            }
+
+            const usuario = JSON.parse(dadosSalvos);
+            if (email === usuario.email && senha === usuario.senha) {
+                localStorage.setItem("usuarioLogado", "true");
+                localStorage.setItem("nomeUsuario", usuario.nome);
+                window.location.href = "index.html";
+            } else {
+                alert("Dados incorretos.");
+            }
+        });
+
+        // As funções criarConta() e esqueciSenha() podem continuar como você já tinha, 
+        // pois usam o mesmo nome "usuarioCadastro" no localStorage.
+    </script>
+</body>
+
+</html>

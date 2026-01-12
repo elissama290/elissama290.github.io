@@ -1,0 +1,466 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* Mantendo a fonte original (Georgia) */
+  font-family: Georgia, 'Times New Roman', Times, serif; 
+}
+
+body {
+  background: #fff;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ======================================= */
+/* 1. CABEÇALHO (HEADER) */
+/* ======================================= */
+.header {
+  background: #f5f1f1;
+  box-shadow: 0 2px 5px rgba(201, 24, 24, 0.1);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.header .container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: linear-gradient(to right, #5a3a1a, #d4a017);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logo span {
+  color: #d4a017;
+}
+
+.navbar a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  color: #d4a017;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Botão Login no Header */
+.loginBtn {
+  background-color: #8b5e3c; 
+  color: white;
+  border: none;
+  padding: 8px 15px; 
+  border-radius: 20px; 
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 0.85em;
+}
+
+.loginBtn:hover {
+  background-color: #704930;
+}
+
+
+/* ======================================= */
+/* 2. SEÇÃO INÍCIO (HERO) */
+/* ======================================= */
+.begin {
+  background: url("https://images.unsplash.com/photo-1586201375761-83865001e17d") no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  padding: 0 10%;
+  position: relative;
+}
+
+.begin .overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,.4);
+}
+
+.begin .content {
+  position: relative;
+  color: #fff;
+  max-width: 600px;
+  z-index: 2;
+}
+
+.begin .subtitle {
+  color:#d4a017;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.begin h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.begin h1 span {
+  color: #f5c542;
+}
+
+.begin p {
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+#products .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 40px 20px;
+}
+
+.product-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    text-align: center;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+
+/* ======================================= */
+/* 3. BOTÕES GERAIS */
+/* ======================================= */
+
+/* Botão Primário (Cor de Destaque: Marrom/Dourado) */
+.btn-primary,
+.btn-header {
+  background-color: #b88a50; 
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s;
+  text-transform: uppercase;
+  font-size: 0.9em;
+}
+
+.btn-primary:hover,
+.btn-header:hover {
+  background-color: #8d6a35; 
+}
+
+/* Botão Secundário (Cor Clara: Bege/Creme) */
+.btn-secondary,
+.btn-back,
+.voltar {
+  background-color: #e0d2b6; 
+  color: #4b2e14; 
+  border: 1px solid #b88a50;
+  padding: 8px 18px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-transform: uppercase;
+  font-size: 0.9em;
+}
+
+.btn-secondary:hover,
+.btn-back:hover,
+.voltar:hover {
+  background-color: #d1b98f; 
+}
+
+/* Botão Adicionar ao Carrinho */
+.btn-add {
+  background-color: #8B5E3C;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  margin-top: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-add:hover {
+  background-color: #A6764F;
+}
+
+
+/* ======================================= */
+/* 4. SEÇÕES E CARDS (PRODUTOS, AVALIAÇÕES) */
+/* ======================================= */
+section {
+  padding: 80px 10%;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #d4a017
+}
+
+.products .grid,
+.review .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
+  padding: 20px;
+  text-align: center;
+  width: auto; /* Removido width fixo para flexibilidade */
+  transition: 0.3s;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.products .card .price {
+  font-weight: bold;
+  color: #b12704; 
+  margin-top: 8px;
+  font-size: 1.1em;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card.new {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: aparecer 0.6s forwards;
+}
+
+@keyframes aparecer {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ======================================= */
+/* 5. SEÇÃO CONTATO */
+/* ======================================= */
+.contact form {
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact input,
+.contact textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.contact button {
+  cursor: pointer;
+}
+
+/* ======================================= */
+/* 6. MODAIS (LOGIN, REGISTRO, ESQUECI SENHA) - CORREÇÃO VERTICAL */
+/* ======================================= */
+
+/* Container externo do Modal (Fundo escuro) */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    z-index: 2000; 
+}
+
+/* Conteúdo interno do Modal */
+.modal-content {
+    background: #fff8f2; 
+    padding: 30px 40px; 
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    max-width: 350px; 
+    width: 90%;
+    position: relative;
+    text-align: center;
+}
+
+.modal-content h2 {
+    color: #b88a50; 
+    margin-bottom: 25px;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+/* Botão Fechar (Close) */
+.modal-content .close {
+    color: #4b2e14;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.modal-content .close:hover {
+    color: #b88a50;
+}
+
+/* Formulário para alinhamento vertical */
+.modal-content form {
+    display: flex;
+    flex-direction: column; /* FORÇA O ALINHAMENTO EM COLUNA */
+    gap: 15px; 
+    align-items: stretch; /* Ocupa a largura total */
+}
+
+/* Inputs dentro dos Modais */
+.modal-content form input {
+    width: 100%; /* Ocupa a largura total do formulário */
+    padding: 12px;
+    border: 1px solid #d4c09d; 
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #fffdf8;
+    box-sizing: border-box;
+}
+
+/* Botão dentro do Formulário do Modal */
+.modal-content form .btn-primary {
+    margin-top: 5px; 
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 1em;
+}
+
+/* Links do Modal (Criar conta, Esqueci senha) */
+.modal-content .modal-links {
+    margin-top: 15px;
+    font-size: 0.95rem;
+}
+
+.modal-content .modal-links a {
+    color: #b88a50;
+    text-decoration: none;
+}
+
+.modal-content .modal-links a:hover {
+    text-decoration: underline;
+}
+
+/* ======================================= */
+/* 7. CARRINHO (REUTILIZANDO ESTILOS) */
+/* ======================================= */
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Removido o estilo .modal antigo aqui, pois foi redefinido acima para o login */
+
+
+/* ======================================= */
+/* 8. RODAPÉ */
+/* ======================================= */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #333;
+  color: #b58810;
+  margin-top: 20px;
+}
+/* Container do Modal - Centralização absoluta */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 2000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.6); 
+    backdrop-filter: blur(5px);
+    
+    /* Estas 3 linhas garantem que QUALQUER modal fique no centro */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Caixa branca interna */
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    position: relative;
+    animation: fadeIn 0.3s ease-out;
+    
+    /* Garante que o conteúdo não fuja para a esquerda */
+    margin: auto; 
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

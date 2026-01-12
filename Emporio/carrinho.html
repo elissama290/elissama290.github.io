@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho - Empório Barboza Gourmet</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fffaf3;
+            color: #3e2b23;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #6b4f3b;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-container {
+            max-width: 900px;
+            margin: 3rem auto;
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .cart-container h3 {
+            margin-bottom: 1.5rem;
+            color: #5a3825;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+
+        table th,
+        table td {
+            padding: 1rem;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        table th {
+            background-color: #f7f1e6;
+            font-weight: bold;
+        }
+
+        .total {
+            text-align: right;
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: #4a2f1f;
+            margin-top: 15px;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+        }
+
+        .btn-remove {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .payment-form,
+        .auth-form {
+            margin-top: 30px;
+            padding: 25px;
+            border-top: 2px dashed #b49d8a;
+            background: #fffdf8;
+            border-radius: 10px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 6px;
+            border: 1px solid #c8b7a6;
+            box-sizing: border-box;
+        }
+
+        .btn-primary {
+            background-color: #6b4f3b;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .btn-secondary {
+            background: #8d7361;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            margin-top: 3rem;
+            background-color: #6b4f3b;
+            color: #fff;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Estilos específicos para o checkout de cartão */
+        .card-label {
+            font-size: 0.85rem;
+            color: #8d7361;
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h2>🛒 Carrinho de Compras</h2>
+        <div id="userStatus"></div>
+        <button onclick="window.location.href='index.html'" class="btn-secondary">← Voltar</button>
+    </header>
+
+    <div class="cart-container">
+        <h3>Seus Itens</h3>
+        <table id="cartTable">
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Preço</th>
+                    <th>Qtd</th>
+                    <th>Subtotal</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <p class="total">Total: R$ <span id="totalAmount">0,00</span></p>
+
+        <div id="authSection" class="auth-form hidden">
+            <h4 id="authTitle" style="text-align: center; color: #6b4f3b;">Faça o Login</h4>
+            <div id="loginFields">
+                <input type="email" id="authEmail" placeholder="Seu E-mail">
+                <input type="password" id="authPassword" placeholder="Sua Senha">
+                <button class="btn-primary" onclick="executarLogin()">Entrar e Continuar</button>
+                <p style="text-align:center; font-size: 0.9rem; margin-top:10px;">
+                    Não tem conta? <a href="#" onclick="alternarAuth(true)">Cadastre-se aqui</a>
+                </p>
+            </div>
+            <div id="registerFields" class="hidden">
+                <input type="text" id="regName" placeholder="Nome Completo">
+                <input type="email" id="regEmail" placeholder="E-mail">
+                <input type="password" id="regPassword" placeholder="Crie uma Senha">
+                <button class="btn-primary" onclick="executarCadastro()">Criar Conta e Continuar</button>
+                <p style="text-align:center; font-size: 0.9rem; margin-top:10px;">
+                    Já tem conta? <a href="#" onclick="alternarAuth(false)">Fazer Login</a>
+                </p>
+            </div>
+        </div>
+
+        <div id="loading" class="hidden" style="text-align: center; color: #5a3825; padding: 20px;">
+            <p><strong>Processando seu pedido, aguarde...</strong></p>
+        </div>
+
+        <div class="actions" id="cartActions">
+            <button class="btn-secondary" onclick="window.location.href='index.html'">← Continuar Comprando</button>
+            <button id="finalizeBtn" class="btn-primary" style="width: auto;">Finalizar Compra</button>
+        </div>
+
+        <div id="paymentSection" class="hidden">
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Empório Barboza Gourmet - Produtos Artesanais de Minas</p>
+    </footer>
+
+    <script>
+        let carrinho = [];
+        let totalGeral = 0;
+
+        window.onload = () => {
+            carregarCarrinho();
+            verificarStatusUsuario();
+        };
+
+        function verificarStatusUsuario() {
+            const logado = localStorage.getItem("usuarioLogado");
+            const statusDiv = document.getElementById("userStatus");
+            if (logado === "true") {
+                const nome = localStorage.getItem("nomeUsuario");
+                statusDiv.innerHTML = `<span style="color:white; margin-right:10px;">Olá, ${nome.split(' ')[0]}</span>`;
+            }
+        }
+
+        function carregarCarrinho() {
+            carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+            const tbody = document.querySelector("#cartTable tbody");
+            tbody.innerHTML = "";
+            totalGeral = 0;
+
+            if (carrinho.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" style="padding: 20px;">Seu carrinho está vazio!</td></tr>`;
+                document.getElementById("finalizeBtn").disabled = true;
+                document.getElementById("totalAmount").textContent = "0,00";
+                return;
+            }
+
+            carrinho.forEach(item => {
+                const subtotal = item.preco * item.quantidade;
+                totalGeral += subtotal;
+                tbody.innerHTML += `
+                    <tr>
+                        <td style="text-align:left;">${item.nome}</td>
+                        <td>R$ ${item.preco.toFixed(2).replace('.', ',')}</td>
+                        <td>${item.quantidade}</td>
+                        <td>R$ ${subtotal.toFixed(2).replace('.', ',')}</td>
+                        <td><button class="btn-remove" onclick="removerItem('${item.id}')">X</button></td>
+                    </tr>`;
+            });
+            document.getElementById("totalAmount").textContent = totalGeral.toFixed(2).replace('.', ',');
+        }
+
+        function removerItem(id) {
+            carrinho = carrinho.filter(item => String(item.id) !== String(id));
+            localStorage.setItem("carrinho", JSON.stringify(carrinho));
+            carregarCarrinho();
+            document.getElementById("paymentSection").classList.add("hidden");
+            document.getElementById("cartActions").classList.remove("hidden");
+        }
+
+        // --- LÓGICA DE AUTENTICAÇÃO ---
+        function alternarAuth(mostrarCadastro) {
+            document.getElementById("loginFields").classList.toggle("hidden", mostrarCadastro);
+            document.getElementById("registerFields").classList.toggle("hidden", !mostrarCadastro);
+            document.getElementById("authTitle").innerText = mostrarCadastro ? "Crie sua Conta" : "Faça Login para Finalizar";
+        }
+
+        function executarCadastro() {
+            const nome = document.getElementById("regName").value;
+            const email = document.getElementById("regEmail").value;
+            const senha = document.getElementById("regPassword").value;
+            if (!nome || !email || !senha) return alert("Preencha todos os campos");
+            const usuarios = JSON.parse(localStorage.getItem("usuariosDB")) || [];
+            if (usuarios.find(u => u.email === email)) return alert("Este e-mail já está cadastrado!");
+            usuarios.push({ nome, email, senha });
+            localStorage.setItem("usuariosDB", JSON.stringify(usuarios));
+            alert("Conta criada com sucesso!");
+            logarUsuario(nome, email);
+        }
+
+        function executarLogin() {
+            const email = document.getElementById("authEmail").value;
+            const senha = document.getElementById("authPassword").value;
+            const usuarios = JSON.parse(localStorage.getItem("usuariosDB")) || [];
+            const user = usuarios.find(u => u.email === email && u.senha === senha);
+            if (user) {
+                logarUsuario(user.nome, user.email);
+            } else {
+                alert("E-mail ou senha incorretos!");
+            }
+        }
+
+        function logarUsuario(nome, email) {
+            localStorage.setItem("usuarioLogado", "true");
+            localStorage.setItem("nomeUsuario", nome);
+            localStorage.setItem("emailUsuario", email);
+            document.getElementById("authSection").classList.add("hidden");
+            verificarStatusUsuario();
+            mostrarPagamento();
+        }
+
+        // --- FLUXO DE PAGAMENTO ---
+        document.getElementById("finalizeBtn").addEventListener("click", () => {
+            const logado = localStorage.getItem("usuarioLogado");
+            if (logado === "true") {
+                mostrarPagamento();
+            } else {
+                document.getElementById("authSection").classList.remove("hidden");
+                document.getElementById("authSection").scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        function mostrarPagamento() {
+            document.getElementById("cartActions").classList.add("hidden");
+            const section = document.getElementById("paymentSection");
+            section.classList.remove("hidden");
+            section.innerHTML = `
+                <div class="payment-form">
+                    <h3 style="color: #6b4f3b;">Forma de Pagamento</h3>
+                    <select id="formaPagamento" onchange="selecionarMetodo(this.value)">
+                        <option value="">Selecione o método...</option>
+                        <option value="pix">PIX (5% de desconto)</option>
+                        <option value="cartao">Cartão de Crédito</option>
+                    </select>
+                    <div id="detalhesCobranca"></div>
+                </div>
+            `;
+        }
+
+        function selecionarMetodo(metodo) {
+            const div = document.getElementById("detalhesCobranca");
+            if (metodo === "pix") {
+                const totalComDesconto = totalGeral * 0.95;
+                div.innerHTML = `
+                    <p style="text-align:center; margin-top:15px;">Total com desconto: <strong>R$ ${totalComDesconto.toFixed(2).replace('.', ',')}</strong></p>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=PagamentoEmporio" style="display:block; margin: 10px auto; border: 5px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                    <p style="text-align:center; font-size:0.8rem; color: #666;">Aponte a câmera do seu celular para o QR Code</p>
+                    <button class="btn-primary" onclick="finalizarPedido('PIX')">Já realizei o PIX</button>
+                `;
+            } else if (metodo === "cartao") {
+                div.innerHTML = `
+                    <div style="margin-top: 20px; text-align: left;">
+                        <label class="card-label">Número do Cartão</label>
+                        <input type="text" id="cardNumber" placeholder="0000 0000 0000 0000" maxlength="19" oninput="mascaraCartao(this)">
+                        
+                        <label class="card-label">Nome do Titular</label>
+                        <input type="text" id="cardName" placeholder="Como escrito no cartão">
+                        
+                        <div style="display: flex; gap: 10px;">
+                            <div style="flex: 2;">
+                                <label class="card-label">Validade (MM/AA)</label>
+                                <div style="display: flex; align-items: center; gap: 5px;">
+                                    <input type="text" id="cardMonth" placeholder="MM" maxlength="2" style="text-align: center;">
+                                    <span style="margin-top:10px;">/</span>
+                                    <input type="text" id="cardYear" placeholder="AA" maxlength="2" style="text-align: center;">
+                                </div>
+                            </div>
+                            <div style="flex: 1;">
+                                <label class="card-label">CVV</label>
+                                <input type="text" id="cardCVV" placeholder="123" maxlength="3" style="text-align: center;">
+                            </div>
+                        </div>
+                        
+                        <button class="btn-primary" style="margin-top: 25px;" onclick="validarEFinalizarCartao()">
+                            PAGAR R$ ${totalGeral.toFixed(2).replace('.', ',')}
+                        </button>
+                    </div>
+                `;
+            } else {
+                div.innerHTML = "";
+            }
+        }
+
+        // --- AUXILIARES CARTÃO ---
+        function mascaraCartao(input) {
+            let v = input.value.replace(/\D/g, '');
+            v = v.replace(/(\d{4})(?=\d)/g, '$1 ');
+            input.value = v;
+        }
+
+        function validarEFinalizarCartao() {
+            const n = document.getElementById('cardNumber').value;
+            const nm = document.getElementById('cardName').value;
+            const m = document.getElementById('cardMonth').value;
+            const a = document.getElementById('cardYear').value;
+            const c = document.getElementById('cardCVV').value;
+
+            if (n.length < 16 || !nm || m.length < 2 || a.length < 2 || c.length < 3) {
+                alert("Por favor, preencha todos os campos do cartão corretamente.");
+                return;
+            }
+            finalizarPedido('Cartão de Crédito');
+        }
+
+        function finalizarPedido(metodo) {
+            document.getElementById("paymentSection").classList.add("hidden");
+            document.getElementById("loading").classList.remove("hidden");
+
+            const novoPedido = {
+                id: Math.floor(100000 + Math.random() * 900000),
+                cliente: localStorage.getItem("nomeUsuario"),
+                email: localStorage.getItem("emailUsuario"),
+                total: totalGeral,
+                metodo: metodo,
+                data: new Date().toLocaleString()
+            };
+
+            const pedidos = JSON.parse(localStorage.getItem("pedidosDB")) || [];
+            pedidos.push(novoPedido);
+            localStorage.setItem("pedidosDB", JSON.stringify(pedidos));
+
+            setTimeout(() => {
+                alert("🎉 Sucesso! Pedido #" + novoPedido.id + " confirmado.\nObrigado por comprar no Empório Barboza!");
+                localStorage.removeItem("carrinho");
+                window.location.href = "index.html";
+            }, 2000);
+        }
+    </script>
+</body>
+
+</html>

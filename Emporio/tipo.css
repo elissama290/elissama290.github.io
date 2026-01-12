@@ -1,0 +1,179 @@
+/* =======================
+   Barbosa Gourmet Mineiro
+   ======================= */
+
+:root {
+    --bg: #f7f3ef;
+    --primary: #3b2c25;
+    --secondary: #d4b483;
+    --text: #3e3e3e;
+    --muted: #555;
+    --surface: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary);
+}
+
+a:hover {
+    color: var(--secondary);
+}
+
+/* Header */
+header {
+    background: var(--primary);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.navbar h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    margin: 0 15px;
+    font-weight: 600;
+}
+
+/* Banner */
+.banner {
+    background: url('https://i.ibb.co/4VkwZxk/queijo-mineiro.jpg') center/cover no-repeat;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: bold;
+    position: relative;
+}
+
+.banner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+}
+
+.hero-content {
+    position: relative;
+}
+
+.hero-content p {
+    margin: 10px 0 20px;
+    font-size: 1.2rem;
+}
+
+.btn {
+    padding: 12px 25px;
+    background: var(--secondary);
+    color: #fff;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: var(--primary);
+}
+
+/* Sections */
+.section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.section h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--primary);
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Products */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.product-card {
+    background: var(--surface);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+}
+
+.product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.product-card h3 {
+    margin: 15px 0 8px;
+    color: var(--primary);
+}
+
+.product-card p {
+    color: var(--muted);
+}
+
+.product-card .price {
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.product-card button {
+    margin-bottom: 15px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.product-card button:hover {
+    background: var(--secondary);
+}
+
+/* Footer */
+footer {
+    background: var(--primary);
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
