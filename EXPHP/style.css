@@ -1,0 +1,63 @@
+body {
+    background: rgb(199, 96, 104);
+    font: normal 15pt Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+header {
+    color: rgb(235, 221, 221);
+    text-align: center;
+    padding: 10px;
+    
+}
+
+div p{
+    font-size: 16px;
+
+}
+.msg{
+    color: white;
+    font-size: 18px;
+
+}
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    min-height: 100vh;
+    
+}
+
+.form form{
+    background-color: white;
+    text-align: center;
+    box-shadow: 0px 6px 20px;
+    border-radius: 10px;
+    padding: 2 rem;
+    width: 28rem;
+}
+
+.form form h2{
+    margin-bottom: 1.5 rem;
+
+}
+.form form input{
+    padding: 10px 15px;
+    font-size: 15px;
+}
+
+.form form button{
+    color: rgb(143, 82, 82);
+    width: 100%;
+    margin-top: 10px;
+    color:  white;
+    
+}
+.form form input{
+    font-size: 15px;
+    margin-top: 8px;
+    
+}
