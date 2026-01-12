@@ -1,0 +1,165 @@
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNOCE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+
+
+</head>
+
+<body>
+
+    <header>
+        <h1 class="site-heading text-center text-faded d-none d-lg-block">
+            <span class="site-heading-upper text-primary mb-3">Aqui sua vida é mais doce</span>
+            <span class="site-heading-lower">UNOCE</span>
+        </h1>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="#">UNOCE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span
+                    class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="index.html">Home</a></li>
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="about.html">Sobre nós</a></li>
+
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="store.html">Loja</a></li>
+
+                    <li class="nav-item px-lg-4">
+                        <button class="btn btn-primary text-uppercase fw-bold" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#cartOffcanvas" aria-controls="cartOffcanvas">
+                            <i class="bi bi-cart"></i> Carrinho (<span id="cart-count">0</span>)
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-section product-list-section">
+        <div class="container">
+            <div class="bg-faded p-5 rounded">
+                <h2 class="mb-4 text-center section-heading">
+                    <span class="section-heading-upper text-secondary">Confira o que há de novo</span>
+                    <span class="section-heading-lower">Produtos em Destaque</span>
+                </h2>
+
+                <div class="row" id="product-list">
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card" data-id="1" data-name="Brigadeiro Gourmet"
+                            data-price="4.90">
+
+                            <div class="card-body">
+                                <h4 class="card-title text-center text-secondary">Brigadeiro Gourmet </h4>
+                                <p class="card-text fw-bold text-center fs-4 text-primary">R$ 4,90</p>
+                                <p class="card-text text-center"> Brigadeiro belga, pistache, bombom de morango </p>
+                            </div>
+                            <div class="card-footer bg-faded border-0">
+                                <button class="btn btn-primary w-100 add-to-cart-btn">Adicionar ao Carrinho</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card" data-id="2" data-name="Bolos" data-price="12.00">
+
+                            <div class="card-body">
+                                <h4 class="card-title text-center text-secondary">Bolos</h4>
+                                <p class="card-text fw-bold text-center fs-4 text-primary">R$ 12,00</p>
+                                <p class="card-text text-center">Cenoura com chocolate, red velt, fubá com goiabada,
+                                    prestigio</p>
+                            </div>
+                            <div class="card-footer bg-faded border-0">
+                                <button class="btn btn-primary w-100 add-to-cart-btn">Adicionar ao Carrinho</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card" data-id="3" data-name="Kit Festa" data-price="90.00">
+
+                            <div class="card-body">
+                                <h4 class="card-title text-center text-secondary">Kit Festa X</h4>
+                                <p class="card-text fw-bold text-center fs-4 text-primary">R$ 90,00</p>
+                                <p class="card-text text-center">50 doces sortidos</p>
+                            </div>
+                            <div class="card-footer bg-faded border-0">
+                                <button class="btn btn-primary w-100 add-to-cart-btn">Adicionar ao Carrinho</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="page-section cta">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 mx-auto">
+                    <div class="cta-inner bg-faded text-center rounded p-5">
+                        <h2 class="section-heading mb-4">
+                            <span class="section-heading-upper text-secondary">Satisfação Garantida</span>
+                            <span class="section-heading-lower">Nosso Compromisso</span>
+                        </h2>
+                        <p class="mb-0">Dedicamo-nos a fornecer produtos de alta qualidade com um serviço amigável. Se
+                            você não estiver satisfeito, faremos o que for preciso para resolver!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="cartOffcanvasLabel"><i class="bi bi-cart-fill"></i> Seu Carrinho</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="list-group mb-3" id="cart-items">
+                <li class="list-group-item d-flex justify-content-center text-muted" id="empty-cart-message">O carrinho
+                    está vazio.</li>
+            </ul>
+
+            <div class="d-grid gap-2">
+                <h4 class="mt-4 text-secondary">Resumo do Pedido</h4>
+                <div class="d-flex justify-content-between">
+                    <span>Subtotal:</span>
+                    <span id="cart-subtotal" class="fw-bold">R$ 0,00</span>
+                </div>
+                <div class="d-flex justify-content-between border-top pt-2">
+                    <span>Total:</span>
+                    <span id="cart-total" class="fw-bold text-primary fs-5">R$ 0,00</span>
+                </div>
+
+                <button id="checkout-btn" class="btn btn-primary btn-lg mt-3" disabled>Finalizar Compra</button>
+                <button id="clear-cart-btn" class="btn btn-outline-danger btn-sm" disabled>Esvaziar Carrinho</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer text-faded text-center py-5">
+        <div class="container">
+            <p class="m-0 small">Copyright &copy; Minha Loja Online 2024</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="cart.js"></script>
+</body>
+
+</html>
