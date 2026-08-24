@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camilli | Portfólio</title>
+    <meta name="description" content="Portfólio de Camilli — Ciência da Computação, análise de dados e automação.">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome (ícones) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fonte Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
+        ::selection { background: #818cf8; color: #0f172a; }
+        .fade-in { animation: fadeIn .6s ease both; }
+        @keyframes fadeIn { from { opacity:0; transform: translateY(8px);} to { opacity:1; transform: translateY(0);} }
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in { animation: none; }
+            html { scroll-behavior: auto; }
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
+
+    <!-- Header / Navbar -->
+    <header class="border-b border-slate-800 bg-slate-900/50 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#topo" class="text-xl font-bold tracking-tight text-indigo-400">Camilli<span class="text-slate-400">.dev</span></a>
+
+            <nav class="hidden sm:flex space-x-6 text-sm font-medium text-slate-300">
+                <a href="#sobre" class="hover:text-indigo-400 transition">Sobre</a>
+                <a href="#projetos" class="hover:text-indigo-400 transition">Projetos</a>
+                <a href="#github" class="hover:text-indigo-400 transition">GitHub</a>
+                <a href="#contato" class="hover:text-indigo-400 transition">Contato</a>
+            </nav>
+
+            <button id="menuBtn" aria-label="Abrir menu" aria-expanded="false" class="sm:hidden text-slate-300 text-xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Menu mobile -->
+        <nav id="mobileMenu" class="hidden sm:hidden border-t border-slate-800 bg-slate-900/80 px-6 py-4 flex flex-col gap-4 text-sm font-medium text-slate-300">
+            <a href="#sobre" class="hover:text-indigo-400 transition">Sobre</a>
+            <a href="#projetos" class="hover:text-indigo-400 transition">Projetos</a>
+            <a href="#github" class="hover:text-indigo-400 transition">GitHub</a>
+            <a href="#contato" class="hover:text-indigo-400 transition">Contato</a>
+        </nav>
+    </header>
+
+    <main id="topo" class="flex-1">
+
+        <!-- Hero / Sobre -->
+        <section id="sobre" class="max-w-5xl mx-auto px-6 py-16 md:py-24">            
+            <h2 class="text-4xl md:text-5xl font-extrabold mt-2 mb-4 tracking-tight leading-tight">
+                Camilli Elissama
+            </h2>
+            <p class="text-indigo-400 text-lg font-semibold mb-6 h-7">
+                <span id="typed"></span><span class="text-slate-500">|</span>
+            </p>
+            <p class="text-slate-400 text-lg max-w-2xl leading-relaxed">
+                Atuo como estagiária dando suporte à operação de internet via satélite de uma empresa do setor de telecomunicações. 
+                No dia a dia, construo automações em Python que eliminam tarefas manuais repetitivas e painéis 
+                que ajudam times a enxergar seus próprios processos com clareza.
+            </p>
+            <p class="text-slate-400 text-lg max-w-2xl leading-relaxed mt-4">
+                Spoiler: TCC combina Arduino com um sistema web de
+                fidelização pensado para pequenos comércios. Gosto resolver problemas reais, mesmo que isso
+                signifique aprender uma ferramenta nova no processo.
+            </p>
+
+            <div class="mt-8 flex flex-wrap gap-2 text-xs font-mono">
+                <span class="bg-slate-800 px-3 py-1 rounded-full text-slate-300">Python</span>
+                <span class="bg-slate-800 px-3 py-1 rounded-full text-slate-300">SQL / MySQL</span>
+                <span class="bg-slate-800 px-3 py-1 rounded-full text-slate-300">PHP</span>
+                <span class="bg-slate-800 px-3 py-1 rounded-full text-slate-300">JavaScript</span>
+                <span class="bg-slate-800 px-3 py-1 rounded-full text-slate-300">Playwright</span>
+                <span class="bg-slate-800 px-3 py-1 rounded-full text-slate-300">Power BI</span>
+                <span class="bg-slate-800 px-3 py-1 rounded-full text-slate-300">Arduino</span>
+            </div>
+
+            <div class="mt-10 flex flex-wrap gap-4">
+                <a href="#projetos" class="inline-flex items-center gap-2 bg-indigo-500 hover:bg-indigo-400 text-slate-950 font-semibold text-sm px-5 py-2.5 rounded-lg transition">
+                    Ver projetos <i class="fa-solid fa-arrow-down text-xs"></i>
+                </a>
+                <a href="#contato" class="inline-flex items-center gap-2 border border-slate-700 hover:border-indigo-400 hover:text-indigo-400 text-slate-200 font-semibold text-sm px-5 py-2.5 rounded-lg transition">
+                    Falar comigo
+                </a>
+            </div>
+        </section>
+
+        <!-- Projetos -->
+        <section id="projetos" class="max-w-5xl mx-auto px-6 py-12 w-full">
+            <h2 class="text-2xl font-bold mb-8 border-b border-slate-800 pb-3 flex items-center gap-2">
+                <i class="fa-solid fa-code text-indigo-400"></i> Projetos em destaque
+            </h2>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Projeto 1: TCC Sistema de Fidelidade -->
+                <article class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition fade-in">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-lg font-bold text-slate-100">Sistema Acessível de Fidelidade (TCC)</h3>
+                            <i class="fa-solid fa-microchip text-slate-500 text-xl"></i>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                            Solução de fidelização focada em pequenos comércios. Combina validação em hardware
+                            (Arduino) com um sistema digital de gestão e banco de dados relacional.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-x-2 gap-y-1 text-xs font-mono text-indigo-300 mb-4">
+                            <span>Arduino</span><span>•</span><span>HTML</span><span>•</span><span>MySQL</span><span>•</span><span>Python</span>
+                        </div>
+                        <a href="https://github.com/SEU-USUARIO/NOME-DO-REPO-TCC" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm text-indigo-400 hover:text-indigo-300 font-medium">
+                            Ver repositório <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Projeto 2: Empório Barboza Gourmet -->
+                <article class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition fade-in">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-lg font-bold text-slate-100">Empório Barboza Gourmet</h3>
+                            <i class="fa-solid fa-cart-shopping text-slate-500 text-xl"></i>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                            Plataforma de e-commerce completa para produtos artesanais, com autenticação de
+                            usuário obrigatória no checkout, carrinho dinâmico e design responsivo.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-x-2 gap-y-1 text-xs font-mono text-indigo-300 mb-4">
+                            <span>PHP</span><span>•</span><span>HTML</span><span>•</span><span>JavaScript</span><span>•</span><span>CSS3</span>
+                        </div>
+                        <a href="https://github.com/SEU-USUARIO/NOME-DO-REPO-EMPORIO" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm text-indigo-400 hover:text-indigo-300 font-medium">
+                            Ver repositório <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Projeto 3: Modelagem & Métodos Numéricos -->
+                <article class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition fade-in">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-lg font-bold text-slate-100">Modelagem &amp; Métodos Numéricos</h3>
+                            <i class="fa-solid fa-chart-line text-slate-500 text-xl"></i>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                            Resolução de problemas matemáticos, programação linear (Pesquisa Operacional) e
+                            métodos computacionais aplicados à otimização de decisões.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-x-2 gap-y-1 text-xs font-mono text-indigo-300 mb-4">
+                            <span>Python</span><span>•</span><span>Otimização</span><span>•</span><span>Matemática aplicada</span>
+                        </div>
+                        <a href="https://github.com/SEU-USUARIO" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm text-indigo-400 hover:text-indigo-300 font-medium">
+                            Ver repositório <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Contato -->
+        <section id="contato" class="max-w-5xl mx-auto px-6 py-16 w-full">
+            <h2 class="text-2xl font-bold mb-3 flex items-center gap-2">
+                <i class="fa-solid fa-paper-plane text-indigo-400"></i> Vamos conversar
+            </h2>
+            <p class="text-slate-400 max-w-2xl mb-8">
+                Estou aberta a oportunidades em dados, automação e desenvolvimento. Me chama por qualquer um
+                dos canais abaixo.
+            </p>
+
+            <div class="grid sm:grid-cols-3 gap-4">
+                <!-- EDITE_AQUI: troque pelos seus links reais -->
+                <a href="mailto:camillimarques261@gmail.com" class="flex items-center gap-3 bg-slate-900 border border-slate-800 hover:border-indigo-500/50 rounded-xl px-5 py-4 transition">
+                    <i class="fa-solid fa-envelope text-indigo-400 text-lg"></i>
+                    <span class="text-sm text-slate-200">camillimarques261@gmail.com</span>
+                </a>
+                <a href="https://www.linkedin.com/in/camilli-elissama-7a7503230/" target="_blank" rel="noopener" class="flex items-center gap-3 bg-slate-900 border border-slate-800 hover:border-indigo-500/50 rounded-xl px-5 py-4 transition">
+                    <i class="fa-brands fa-linkedin text-indigo-400 text-lg"></i>
+                    <span class="text-sm text-slate-200">linkedin.com/in/camilli-elissama-7a7503230/</span>
+                </a>
+                <a href="https://github.com/elissama290" target="_blank" rel="noopener" class="flex items-center gap-3 bg-slate-900 border border-slate-800 hover:border-indigo-500/50 rounded-xl px-5 py-4 transition">
+                    <i class="fa-brands fa-github text-indigo-400 text-lg"></i>
+                    <span class="text-sm text-slate-200">github.com/elissama290</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="border-t border-slate-800 bg-slate-900/30 py-6">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <p class="text-slate-500 text-sm">&copy; <span id="year"></span> Camilli. Publicado via GitHub Pages.</p>
+        </div>
+    </footer>
+
+    <!-- Integrações JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js"></script>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Efeito de digitação no hero
+        if (window.Typed) {
+            new Typed('#typed', {
+                strings: [
+                    'Estagiária 📊',
+                    'Automatizando o que dá pra automatizar 🤖',
+                    'Estudante de Ciência da Computação 🎓',
+                    'Movida a café e curiosidade ☕'
+                ],
+                typeSpeed: 45,
+                backSpeed: 25,
+                backDelay: 1400,
+                loop: true
+            });
+        }
+
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuBtn.addEventListener('click', () => {
+            const isOpen = !mobileMenu.classList.contains('hidden');
+            mobileMenu.classList.toggle('hidden');
+            menuBtn.setAttribute('aria-expanded', String(!isOpen));
+            menuBtn.innerHTML = isOpen
+                ? '<i class="fa-solid fa-bars"></i>'
+                : '<i class="fa-solid fa-xmark"></i>';
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+                menuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+        
+    </script>
+
+</body>
+</html> 
